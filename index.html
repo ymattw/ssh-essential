@@ -1,418 +1,53 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=800" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="author" content="Matthew Wang" />
-    <title>SSH Essentials</title>
-    <link href="css/slice.css" rel="stylesheet" />
-</head>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ssh-essentials by gmattw</title>
 
-<body>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ssh-essentials</h1>
+        <p>Slice in impress.js for ssh essentials</p>
 
-<div id="impress" class="impress-not-supported">
+        <p class="view"><a href="https://github.com/gmattw/ssh-essentials">View the Project on GitHub <small>gmattw/ssh-essentials</small></a></p>
 
-    <div class="fallback-message">
-        <p>Your browser <b>doesn't support the features required</b> by
-        impress.js, so you are presented with a simplified version of this
-        presentation.</p> <p>For the best experience please use the latest
-        <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser. Upcoming
-        version 10 of Internet Explorer <i>should</i> also handle it.</p>
-    </div>
 
-    <!-- first data-foo works if multiple specified -->
-    <div data-x="3000" data-y="2500" class="step title" id="cover" data-scale="20">
-        <img src="img/openssh.gif" />
-        <h1>SSH Essentials</h1>
-        <p>Matthew Wang (@ymattw)</p>
-        <p>Mar 21, 2012</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="0" id="outline">
-        <h2>Outline</h2>
         <ul>
-            <li>Overview</li>
-            <li>Basic usage</li>
-            <li>Public key authentication</li>
-            <li>SSH agent</li>
-            <li>Troubleshooting</li>
-            <li>Advanced: port forwarding</li>
-            <li>Appendix</li>
+          <li><a href="https://github.com/gmattw/ssh-essentials/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/gmattw/ssh-essentials/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/gmattw/ssh-essentials">View On <strong>GitHub</strong></a></li>
         </ul>
+      </header>
+      <section>
+        <h1>Slice in impress.js for ssh essentials</h1>
+
+<p>Outline:</p>
+
+<ul>
+<li>Overview</li>
+<li>Basic usage</li>
+<li>Public key authentication</li>
+<li>SSH agent</li>
+<li>Troubleshooting</li>
+<li>Advanced: port forwarding</li>
+<li>Appendix</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/gmattw">gmattw</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-
-    <div class="step title" data-x="0" data-y="600" data-scale="2">
-        <h2>Overview</h2>
-        <p>Concept, typical usage, clients</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="600">
-        <h3>Concept</h3>
-        <ul>
-            <li>Secure SHell, replaces telnet and rsh</li>
-            <li>A network protocol for secure data communication</li>
-            <li><a href="http://www.openssh.org">OpenSSH</a> is the most popular implementation</li>
-            <li>Client-server model over TCP (default port 22)</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="2000" data-y="600">
-        <h3>Typical usage</h3>
-        <ul>
-            <li>Remote shell services or command execution</li>
-            <li>Secure data communication over an insecure network</li>
-        </ul>
-        <img src="img/ssh-concept.jpg" />
-    </div>
-
-    <div class="step" data-x="3000" data-y="600">
-        <h3>Clients</h3>
-        <ul>
-            <li>OpenSSH: ssh, scp, sftp, ssh-keygen, ssh-agent, ssh-add</li>
-            <li>PuTTY (putty, plink, pscp, psftp, puttygen, pagent)<br><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a></li>
-        </ul>
-    </div>
-
-    <div class="step title" data-x="0" data-y="1200" data-scale="2" id="basic">
-        <h2>Basic usage</h2>
-        <p>Basic commands, known hosts, client side configuration</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="1200">
-        <h3>Basic usage: ssh</h3>
-        <ul>
-            <li>ssh user@example.org</li>
-            <li>ssh -l user example.org</li>
-            <li>ssh example.org</li>
-            <li>ssh example.org cat /etc/hosts</li>
-            <li>ssh example.org "hostname; cat /etc/hosts"</li>
-            <li>ssh -t example.org screen -dr</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="2000" data-y="1200">
-        <h3>Basic usage: scp</h3>
-        <ul>
-            <li>scp localFile user@example.org:remotePath</li>
-            <li>scp user@example.org:remoteFile localPath</li>
-            <li>scp -r localFile example.org:</li>
-            <li>scp -o port=2222 example.org:remoteFile .</li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="3000" data-y="1200">
-        <h3>Basic usage: sftp</h3>
-        <pre>
-localhost:~ $ <b>sftp login.example.org</b>
-Connecting to login.example.org...
-Password:
-sftp&gt; <b>ls</b>
-HOMEBACKUP          HOSTS           foo.example.org
-error2.log          success.log     tf-tunnel.sh
-sftp&gt; <b>get error2.log</b>
-Fetching /home/mattw/error2.log to error2.log
-/home/mattw/error2.log 100% 1902KB 100.1KB/s   00:19
-sftp&gt; <b>mput H*</b>
-Uploading HOSTS to /home/mattw/HOSTS
-HOSTS                          100%   31     0.0KB/s   00:00
-sftp&gt; <b>help</b>
-...
-sftp&gt; <b>exit</b>
-localhost:~ $
-        </pre>
-    </div>
-
-    <div class="step" data-x="4000" data-y="1200">
-        <h3>Known hosts</h3>
-        <p>The prompt at first time connection</p>
-<pre>
-$ ssh -l mattw example.org
-The authenticity of host 'example.org (192.168.0.2)' can't be established.
-RSA key fingerprint is 77:a5:69:81:9b:eb:40:76:7b:13:04:a9:6c:f4:9c:5d.
-Are you sure you want to continue connecting (<span class="red">yes/no</span>)?
-
-Warning: Permanently added 'example.org,192.168.0.2' (RSA) to the list of
-known hosts
-</pre>
-        <p>Skip the prompt: <code>ssh -o BatchMode=yes</code></p>
-    </div>
-
-    <div class="step" data-x="5000" data-y="1200">
-        <h3>Known hosts</h3>
-        <p>The warning</p>
-<pre>
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
-Someone could be eavesdropping on you right now (man-in-the-middle attack)!
-It is also possible that the RSA host key has just been changed.
-The fingerprint for the RSA key sent by the remote host is
-77:a5:69:81:9b:eb:40:76:7b:13:04:a9:6c:f4:9c:5d.
-Please contact your system administrator.
-Add correct host key in /home/mattw/.ssh/known_hosts to get rid of this
-message.
-<span class="red">Offending key in /home/mattw/.ssh/known_hosts:36</span>
-</pre>
-        <p>Sometimes:</p>
-        <pre>Offending key in <span class="red">/etc/ssh/known_hosts:36</span></pre>
-        <p>Igore the warning: <code>ssh -o StrictHostKeyChecking=no</code></p>
-    </div>
-
-    <div class="step" data-x="6000" data-y="1200">
-        <h3>Client side configuration</h3>
-        <p>Save command line options to ~/.ssh/config</p>
-        <pre>
-Host e
-    Hostname example.org
-    User mattw
-
-Host foo.*
-    StrictHostKeyChecking no
-        </pre>
-
-        <p>man ssh_config</p>
-    </div>
-
-    <div class="step title" data-x="0" data-y="1800" data-scale="2" id="pubkey">
-        <h2>Public key authentication</h2>
-        <p>Concept, generate key pair, setup key</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="1800">
-        <h3>Concept of public key authentication</h3>
-        <ul>
-            <li><span class="navy">public</span> key for <span class="navy">encryption </span>, and</li>
-            <li><span class="red">private</span> key for <span class="red">decryption</span></li>
-            <li>Messages are encrypted with the recipient's public key, and</li>
-            <li>can be decrypted only with the corresponding private key</li>
-        </ul>
-        <img src="img/public-key-auth.jpg" />
-    </div>
-
-    <div class="step" data-x="2000" data-y="1800">
-        <h3>Generate key pair</h3>
-        <ul>
-            <li>ssh-keygen [-t &lt;rsa|dsa&gt;] [-f identity]</li>
-            <!-- DSA is faster at signing, RSA is faster at verifying --></li>
-            <li>Default filename: ~/.ssh/id_rsa, ~/.ssh/id_dsa</li>
-            <li>The passphrase</li>
-            <li>Tip: dump public key<br>
-            <pre>ssh-keygen -y -f identity</pre></li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="3000" data-y="1800">
-        <h3>Setup key</h3>
-        <ul>
-            <li><span class="red">Append <b>public</b> key</span> to
-            <u>~/.ssh/authorized_keys</u> on remote host</li>
-            <li>The ownership and permission bits (minimal)<pre>
-(Both sides)
-drwxr-xr-x 39 mattw users 4096 Mar  6 23:17 /home/mattw/
-drwx------  2 mattw users 4096 Mar  2 15:32 /home/mattw/.ssh/
-
-(Client side)
--rw-------  1 mattw users  951 Jul 29  2011 /home/mattw/.ssh/mattw.key
-
-(Server side)
--rw-------  1 mattw users  951 Jul 29  2011 /home/mattw/.ssh/authorized_keys
-</pre>
-            </li>
-            <li>Use key in client side: <code>ssh -i ~/.ssh/mattw.key</code></li>
-            <li>In ~/.ssh/config:
-<pre>
-Host github.com
-    User git
-    IdentityFile ~/.ssh/mattw.key
-</pre>
-            </li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="4000" data-y="1800">
-        <h3>Use OpenSSH private key with PuTTY</h3>
-        <img src="img/puttygen-import.jpg" />
-    </div>
-
-    <div class="step title" data-x="0" data-y="2400" data-scale="2" id="agent">
-        <h2>SSH agent</h2>
-        <p>Concept, using ssh-agent, agent forwarding</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="2400">
-        <h3>Concept of ssh agent</h3>
-        <img width="600" src="img/ssh-agent.jpg" />
-    </div>
-
-    <div class="step" data-x="2000" data-y="2400">
-        <h3>Using ssh-agent</h3>
-        <p>ssh-agent daemonize itself and output a bunch of environment variables</p>
-        <ol>
-            <li>Invoke a ssh-agent process
-                <ul>
-                    <li>ssh-agent bash, or</li>
-                    <li>eval `ssh-agent`, or</li>
-                    <li>ssh-agent &gt; .agent.rc; source .agent.rc</li>
-                </ul>
-            </li>
-            <li>Add key: ssh-add ~/.ssh/mattw.key</li>
-            <li>List key: ssh-add -l</li>
-            <li>ssh login.example.org</li>
-        </ol>
-        <p>The secret</p>
-        <pre>
-localhost:~ $ <b>echo $SSH_AGENT_PID</b>
-19177
-localhost:~ $ <b>echo $SSH_AUTH_SOCK</b>
-/tmp/ssh-QQtcq19176/agent.19176
-localhost:~ $ <b>ls -l $SSH_AUTH_SOCK</b>
-<span class="red">s</span>rw------- 1 mattw users 0 Mar 19 13:46 /tmp/ssh-QQtcq19176/agent.19176
-localhost:~ $
-        </pre>
-        
-        
-    </div>
-
-    <div class="step" data-x="3000" data-y="2400">
-        <h3>Agent forwarding</h3>
-        <pre>
-ssh -A
-(ssh -o ForwardAgent=yes)
-        </pre>
-        <img width="800" src="img/ssh-agent-forwarding.jpg" />
-    </div>
-
-    <div class="step" data-x="4000" data-y="2400">
-        <h3>SSH agent in PuTTY</h3>
-        <img src="img/pagent.jpg" />
-        <p>Run <b>pagent.exe</b> and add your private key (imported openssh key)</p>
-    </div>
-
-    <div class="step title" data-x="0" data-y="3000" data-scale="2" id="debug">
-        <h2>Troubleshooting</h2>
-        <p>Tips, FAQ, where to get help</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="3000">
-        <h3>Troubleshooting tips</h3>
-        <ul>
-            <li>Login problem
-                <ul>
-                    <li>ssh -v -v</li>
-                    <li>check ownership and permission bits</li>
-                    <li>/var/log/secure, /var/log/message</li>
-                </ul>
-            </li>
-            <li>SSH agent problem
-                <ul>
-                    <li>"Error reading response length from authentication socket"</li>
-                    <li>check <code>$SSH_AUTH_SOCK</code></li>
-                    <li>ssh-add -l</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <div class="step" data-x="2000" data-y="3000">
-        <h3>My favorite FAQ</h3>
-        <p><code>ssh remote "myscipt.sh &amp;"</code> just <span class="red">hang</span></p>
-        <ul>
-            <li>POC: ssh foo.example.org "/bin/sleep 5 &amp;"</li>
-            <li>It does not "hang", it is waiting for stdin/stdout/stderr as
-            they are bound to the connection socket</li>
-        </ul>
-        
-        <p>Solution: redirect stdin/stdout/stderr, e.g:
-            &lt; /dev/null &gt; run.log 2&gt; &amp;1</p>
-
-        <p>Similar: ssh remote myscipt.sh "hang" upon completion when it run
-        other process in background with stdin/stdout/stderr open</p>
-        
-        <a href="http://www.openssh.org/faq.html#3.10">OpenSSH FAQ 3.10 - Hangs when exiting ssh</a>
-    </div>
-
-    <div class="step" data-x="3000" data-y="3000">
-        <h3>Where to get help</h3>
-        <ul>
-            <li>man ssh, man ssh-keygen, man ssh_config, etc.</li>
-            <li>Search the web</li>
-            <li>"SSH, The Secure Shell: The Definitive Guide"</li>
-        </ul>
-        <img src="img/oreilly-ssh-book.jpg" />
-    </div>
-
-    <div class="step title" data-x="0" data-y="3600" data-scale="2" id="advanced">
-        <h2>Advanced: port forwarding</h2>
-        <p>Local/remote/dynamic port forwarding (tunneling)</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="3600">
-        <h3>Local port forwarding</h3>
-        <img src="img/local-port-forwarding.jpg" />
-    </div>
-
-    <div class="step" data-x="2000" data-y="3600">
-        <h3>Remote port forwarding</h3>
-        <img src="img/remote-port-forwarding.jpg" />
-    </div>
-
-    <div class="step" data-x="3000" data-y="3600">
-        <h3>Dynamic port forwarding</h3>
-        <img width="800" src="img/dynamic-port-forwarding.jpg" />
-    </div>
-
-    <div class="step" data-x="4000" data-y="3600">
-        <h3>Port forward only</h3>
-        <p>ssh -f -N</p>
-        <pre>
--f      Requests ssh to go to background just before command execution.
-        This is useful if ssh is going to ask for passwords or
-        passphrases, but the user wants it in the background. 
-
--N      Do not execute a remote command.  This is useful for just for-
-        warding ports (protocol version 2 only).
-        </pre>
-    </div>
-
-    <div class="step title" data-x="0" data-y="4200" data-scale="2" id="appendix">
-        <h2>Appendix</h2>
-        <p>Other implementations</p>
-    </div>
-
-    <div class="step" data-x="1000" data-y="4200">
-        <h3>Other SSH implementations</h3>
-        <ul>
-            <li><a href="https://matt.ucc.asn.au/dropbear/dropbear.html">Dropbear</a>: Lightweight SSH server/client for embedded systems</li>
-            <li><a href="http://www.lag.net/paramiko/">paramiko</a>: SSH2 implementation written entirely in python</li>
-            <li><a href="http://www.lag.net/jaramiko/">jaramiko</a>: Java port of paramiko</li>
-            <li><a href="http://www.jcraft.com/jsch/">JSch - Java Secure Channel</a>: a pure Java implementation of SSH2</li>
-            <li><a href="http://www.vandyke.com/">SecureCRT</a>: Mluti tabbed SSH client, support Z-modem file transfer</li>
-            <li><a href="http://en.poderosa.org/">Poderosa</a>: tabbed terminal emulator (SSH client) for Windows</li>
-            <li><a href="http://sourceforge.net/projects/winscp/">WinSCP</a>: Graphical SCP client for Windows</li>
-        </ul>
-    </div>
-        
-    <div id="overview" class="step" data-scale="15" data-x="3000" data-y="2500">
-    </div>
-
-</div>
-
-
-<div class="hint">
-    <p>Use space bar or arrow keys to navigate</p>
-</div>
-<script>
-if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
-}
-</script>
-
-
-<script src="js/impress.js"></script>
-<script>impress();</script>
-
-</body>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
 </html>
-<!-- vim:set et sts=4 sw=4 fo=: -->
