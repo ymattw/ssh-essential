@@ -1,4 +1,12 @@
 Slice in impress.js for ssh essentials
 ======================================
 
-Just clone.
+Outline:
+
+- Overview
+- Basic usage
+- Public key authentication
+- SSH agent
+- Troubleshooting
+- Advanced: port forwarding
+- Appendix
