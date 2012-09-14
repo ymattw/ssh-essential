@@ -10,3 +10,5 @@ Outline:
 - Troubleshooting
 - Advanced: port forwarding
 - Appendix
+
+Vist on github pages: [http://gmattw.github.com/ssh-essentials]
