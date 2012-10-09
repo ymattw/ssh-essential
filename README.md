@@ -1,7 +1,7 @@
-Slice in impress.js for ssh essentials
+Slides in impress.js for ssh essential
 ======================================
 
-Outline:
+**Outline**
 
 - Overview
 - Basic usage
@@ -11,4 +11,4 @@ Outline:
 - Advanced: port forwarding
 - Appendix
 
-Vist on github pages: [http://gmattw.github.com/ssh-essentials]
+Vist on [github pages](http://ymattw.github.com/ssh-essential)
