@@ -1,5 +1,4 @@
-Slides in impress.js for ssh essential
-======================================
+# Slides written with [remark](https://github.com/gnab/remark) for ssh essential
 
 **Outline**
 
