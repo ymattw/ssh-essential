@@ -22,6 +22,7 @@ Matthew Wang
 <small>
 2012/3/21 First revision with [impress.js](https://github.com/impress/impress.js)<br>
 2015/12/31 Refactored with [remark](https://github.com/gnab/remark)
+</small>
 
 ---
 
@@ -171,17 +172,18 @@ message.
 
 ### Client side configuration
 
-<p>Save command line options to ~/.ssh/config</p>
-<pre>
-Host e
-    Hostname example.org
-    User ymattw
+Save command line options to ~/.ssh/config
 
-Host foo.*
-    StrictHostKeyChecking no
-</pre>
+```
+  Host e
+      Hostname example.org
+      User ymattw
 
-<p>man ssh_config</p>
+  Host foo.*
+      StrictHostKeyChecking no
+```
+
+To see all options: `man ssh_config`
 
 ---
 
@@ -205,7 +207,7 @@ class: center, middle
 
 <h3>Generate key pair</h3>
 <ul>
-  <li>ssh-keygen [-t rsa | dsa] [-f identity]
+  <li>ssh-keygen [-t rsa | dsa] [-f key]
   <pre>
 % ssh-keygen
 Generating public/private rsa key pair.
@@ -226,7 +228,7 @@ ff:1a:11:a6:a1:30:09:77:a8:23:2b:9e:ac:59:5c:9a ymattw@cent7
   <li>Default filename: ~/.ssh/id_rsa, ~/.ssh/id_dsa</li>
   <li>The passphrase</li>
   <li>Tip: dump public key<br>
-  <pre>ssh-keygen -y -f identity</pre></li>
+  <pre>ssh-keygen -y -f key</pre></li>
 </ul>
 
 ---
@@ -333,7 +335,7 @@ class: center, middle
     <li>ssh -v -v</li>
     <li>check ownership and permission bits</li>
     <li>/var/log/secure, /var/log/message, /var/log/auth.log</li>
-    <li>Is that a newly create user still in 'locked' state? (password not set)</li>
+    <li>Is that a newly created user still in 'locked' state? (password not set)</li>
   </ul>
   </li>
   <li>SSH agent problem
