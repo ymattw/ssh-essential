@@ -19,8 +19,8 @@ class: center, middle
 
 Matthew Wang
 
-2012/3/21 First revision with [impress.js](https://github.com/impress/impress.js)
-
+<small>
+2012/3/21 First revision with [impress.js](https://github.com/impress/impress.js)<br>
 2015/12/31 Refactored with [remark](https://github.com/gnab/remark)
 
 ---
@@ -68,6 +68,8 @@ Concept, typical usage, clients
 - OpenSSH: ssh, scp, sftp, ssh-keygen, ssh-agent, ssh-add
 - PuTTY (putty, plink, pscp, psftp, puttygen, pageant), **offcial site**:
   <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>
+- SecureCRT
+- XShell
 
 ---
 
@@ -94,7 +96,7 @@ Basic commands, known hosts, client side configuration
 
 - scp localFile user@example.org:remotePath
 - scp user@example.org:remoteFile localPath
-- scp -r localFile example.org:
+- scp -r localDir example.org:
 - scp -o port=2222 example.org:remoteFile .
 
 ---
@@ -203,7 +205,23 @@ class: center, middle
 
 <h3>Generate key pair</h3>
 <ul>
-  <li>ssh-keygen [-t rsa | dsa] [-f identity]</li>
+  <li>ssh-keygen [-t rsa | dsa] [-f identity]
+  <pre>
+% ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ymattw/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/ymattw/.ssh/id_rsa.
+Your public key has been saved in /home/ymattw/.ssh/id_rsa.pub.
+The key fingerprint is:
+ff:1a:11:a6:a1:30:09:77:a8:23:2b:9e:ac:59:5c:9a ymattw@cent7
+...
+% l ~/.ssh/id_rsa*
+-rw------- 1 ymattw wheel 1675 Jan  1 19:15 /home/ymattw/.ssh/id_rsa
+-rw-r--r-- 1 ymattw wheel  394 Jan  1 19:15 /home/ymattw/.ssh/id_rsa.pub
+  </pre>
+  </li>
   <!-- DSA is faster at signing, RSA is faster at verifying -->
   <li>Default filename: ~/.ssh/id_rsa, ~/.ssh/id_dsa</li>
   <li>The passphrase</li>
@@ -216,7 +234,8 @@ class: center, middle
 <h3>Setup key</h3>
 <ul>
   <li><span class="red">Append <b>public</b> key</span> to
-  <u>~/.ssh/authorized_keys</u> on remote host</li>
+  <u>~/.ssh/authorized_keys</u> on remote host, or use <code>ssh-copy-id id_rsa
+  user@remote_host</code></li>
   <li>The ownership and permission bits (minimal)<pre>
 (Both sides)
 drwxr-xr-x 39 ymattw users 4096 Mar  6 23:17 /home/ymattw/
@@ -233,11 +252,11 @@ drwx------  2 ymattw users 4096 Mar  2 15:32 /home/ymattw/.ssh/
   <li>In ~/.ssh/config:
   <pre>
 Host github.com
-  User git
-  IdentityFile ~/.ssh/ymattw.key
+    User git
+    IdentityFile ~/.ssh/ymattw.key
   </pre>
   </li>
-  </ul>
+</ul>
 
 ---
 
@@ -264,7 +283,7 @@ class: center, middle
   <li>Invoke a ssh-agent process
   <ul>
     <li>ssh-agent bash, or</li>
-    <li>eval `ssh-agent`, or</li>
+    <li>eval $(ssh-agent), or</li>
     <li>ssh-agent &gt; .agent.rc; source .agent.rc</li>
   </ul>
   </li>
@@ -313,7 +332,8 @@ class: center, middle
   <ul>
     <li>ssh -v -v</li>
     <li>check ownership and permission bits</li>
-    <li>/var/log/secure, /var/log/message</li>
+    <li>/var/log/secure, /var/log/message, /var/log/auth.log</li>
+    <li>Is that a newly create user still in 'locked' state? (password not set)</li>
   </ul>
   </li>
   <li>SSH agent problem
@@ -405,7 +425,7 @@ class: center, middle
   <li><a href="http://www.jcraft.com/jsch/">JSch - Java Secure Channel</a>: a pure Java implementation of SSH2</li>
   <li><a href="http://www.vandyke.com/">SecureCRT</a>: Mluti tabbed SSH client, support Z-modem file transfer</li>
   <li><a href="http://en.poderosa.org/">Poderosa</a>: tabbed terminal emulator (SSH client) for Windows</li>
-  <li><a href="http://sourceforge.net/projects/winscp/">WinSCP</a>: Graphical SCP client for Windows</li>
+  <li><a href="http://sourceforge.net/projects/winscp/">WinSCP</a>: Graphical sftp client for Windows</li>
 </ul>
 
 </textarea>
