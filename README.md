@@ -10,4 +10,4 @@
 - Advanced: port forwarding
 - Appendix
 
-Visit on [github pages](http://ymattw.github.com/ssh-essential).
+View this [presentation online](http://ymattw.github.com/ssh-essential).
