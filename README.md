@@ -1,4 +1,4 @@
-# Slides written with [remark](https://github.com/gnab/remark) for ssh essential
+# Slides powered by [remark](https://github.com/gnab/remark) for ssh essential
 
 **Outline**
 
@@ -10,4 +10,4 @@
 - Advanced: port forwarding
 - Appendix
 
-View this [presentation online](http://ymattw.github.com/ssh-essential).
+View this [presentation](http://ymattw.github.com/ssh-essential) online.
