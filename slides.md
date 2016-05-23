@@ -7,7 +7,7 @@ class: center, middle
 Matthew Wang
 
 <small>
-Last updated: May 22, 2016<br>
+Last updated: May 23, 2016<br>
 [github.com/ymattw/ssh-essential](https://github.com/ymattw/ssh-essential)
 </small>
 
