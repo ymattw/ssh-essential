@@ -7,8 +7,8 @@ class: center, middle
 Matthew Wang
 
 <small>
-Last updated: May 23, 2016<br>
-[github.com/ymattw/ssh-essential](https://github.com/ymattw/ssh-essential)
+Last updated: May 25, 2016<br>
+[github.com/ymattw](https://github.com/ymattw)
 </small>
 
 ---
@@ -416,3 +416,11 @@ class: center, middle
   <li><a href="http://en.poderosa.org/">Poderosa</a>: tabbed terminal emulator (SSH client) for Windows</li>
   <li><a href="http://sourceforge.net/projects/winscp/">WinSCP</a>: Graphical sftp client for Windows</li>
 </ul>
+
+---
+
+class: center, middle
+
+## Thank you!
+
+[github.com/ymattw/ssh-essential](https://github.com/ymattw/ssh-essential)
